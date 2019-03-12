@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+{%load static %}
+<html lang="en" class="no-js">
+  {% include 'head.html' %}
+
+    <body id="body" data-spy="scroll" data-target=".header">
+      {% include 'header.html' %}
+
+        <div class="promo-block">
+          {% if not request.user.is_authenticated %}
+          <div class="container">
+            <div class="row centered-form">
+              <div class="col-xs-12 col-sm-10 col-md-6 col-sm-offset-2 col-md-offset-3 margin-b-60">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <h3 class="panel-title">Авторизация</h3>
+                    <form role="form" id="login_form"> {% csrf_token %}
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <div class="form-group">
+                              <input type="text" name="username" class="form-control input-sm" placeholder="Логин">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <div class="form-group">
+                              <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Пароль">
+                            </div>
+                          </div>
+                        </div>
+                        <input type="submit" value="Войти" class="btn btn-info btn-block">
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {% else %}
+
+
+          <div class="container margin-b-40" id="upload">
+            <div class="row centered-form">
+              <div class="col-xs-12 col-sm-10 col-md-4 col-sm-offset-2 col-md-offset-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <h3 class="panel-title">Зарузка скина</h3>
+                    <canvas id="canvas" width="0" height="0"></canvas>
+                    <form role="form" id="upload_skin">
+                        <div class="row">
+                          <div class="col-xs-12">
+
+                            <div class="form-group">
+                              <span> Формат файла - png </span>
+                              <input type="file" name="skin" class="form-control input-sm">
+                            </div>
+                          </div>
+                        </div>
+                        <input type="submit" id="upload_skin_button" value="Загрузить" class="btn btn-info btn-block">
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container margin-b-40">
+            <div class="row centered-form">
+              <div class="col-xs-12 col-sm-10 col-md-4 col-sm-offset-2 col-md-offset-4">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <h3 class="panel-title">Зарузка плаща</h3>
+                    <form role="form" id="upload_cloak">
+                        <div class="row">
+                          <div class="col-xs-12">
+                            <div class="form-group">
+                              <span> Формат файла - png </span>
+                              <input type="file" name="cloak" class="form-control input-sm">
+                            </div>
+                          </div>
+                        </div>
+                        <input type="submit" id="upload_cloak_button" value="Загрузить" class="btn btn-info btn-block">
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="skin-model">
+          </div>
+
+          {% endif %}
+        </div>
+
+
+
+
+
+
+        <!-- Back To Top -->
+        <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+
+        <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+        <!-- CORE PLUGINS -->
+        <script src="/static/vendor/jquery.min.js" type="text/javascript"></script>
+        <script src="/static/vendor/jquery-migrate.min.js" type="text/javascript"></script>
+        <script src="/static/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <!-- PAGE LEVEL PLUGINS -->
+        <script src="/static/vendor/jquery.easing.js" type="text/javascript"></script>
+        <script src="/static/vendor/jquery.back-to-top.js" type="text/javascript"></script>
+        <script src="/static/vendor/jquery.smooth-scroll.js" type="text/javascript"></script>
+        <script src="/static/vendor/jquery.wow.min.js" type="text/javascript"></script>
+        <script src="/static/vendor/swiper/js/swiper.jquery.min.js" type="text/javascript"></script>
+        <script src="/static/vendor/magnific-popup/jquery.magnific-popup.min.js" type="text/javascript"></script>
+        <script src="/static/vendor/masonry/jquery.masonry.pkgd.min.js" type="text/javascript"></script>
+        <script src="/static/vendor/masonry/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+
+
+        <!-- PAGE LEVEL SCRIPTS -->
+        <script src="/static/js/layout.min.js" type="text/javascript"></script>
+        <script src="/static/js/components/wow.min.js" type="text/javascript"></script>
+        <script src="/static/js/components/swiper.min.js" type="text/javascript"></script>
+        <script src="/static/js/components/maginific-popup.min.js" type="text/javascript"></script>
+        <script src="/static/js/components/masonry.min.js" type="text/javascript"></script>
+        <script src="/static/js/components/gmap.min.js" type="text/javascript"></script>
+
+		     <!-- AJAX SCRIPT -->
+		     <script src="/static/js/ajax.js" type="text/javascript"></script>
+
+         <!-- RENDER SCRIPTS -->
+         <script> var player_username = "{{ request.user.username }}" </script>
+         <script src="/static/js/three.min.js" type="text/javascript"></script>
+         <script src="/static/js/2dskin.js" type="text/javascript"></script>
+         <script src="/static/js/skinloader.js" type="text/javascript"></script>
+    </body>
+    <!-- END BODY -->
+</html>
